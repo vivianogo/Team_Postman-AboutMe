@@ -1,0 +1,14 @@
+Quality Assurance, detailed oriented and passionate about technology with solid 
+ Experience in API testing using Postman.
+ Experience in Mobile Application and Web Application Testing. 
+ Excellent knowledge of Manual and Test Automation with Cypress. 
+ Experience in Functional Testing, Usability Testing. 
+ Good Analytical skills to comprehend Business requirements and verification of those requirements. 
+ Good knowledge of the testing process, test tools, creation and understanding of testing artefacts like 
+test scenarios, test cases etc. 
+ Knowledge of Software Development Life Cycle (SDLC) & Software Testing life cycle (STLC). 
+ Knowledge of Agile methodology. 
+ Experience in Preparation, Execution and maintenance of Test Cases manually 
+ Good knowledge of Bug life cycle. 
+ Knowledge regarding Testing Terminologies, Verification, Validation, Levels of Testing and Testing 
+Techniques
