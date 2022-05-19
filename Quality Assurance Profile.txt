@@ -12,3 +12,4 @@ test scenarios, test cases etc.
  Good knowledge of Bug life cycle. 
  Knowledge regarding Testing Terminologies, Verification, Validation, Levels of Testing and Testing 
 Techniques
+ Good knowledge of Git and Github.
