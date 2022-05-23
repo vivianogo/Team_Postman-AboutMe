@@ -18,11 +18,11 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -38,12 +38,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo",
+									"raw": "{{baseUrl1}}",
 									"host": [
 										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
 									]
 								}
 							},
@@ -68,12 +65,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo",
+									"raw": "{{baseUrl1}}",
 									"host": [
 										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
 									]
 								}
 							},
@@ -98,12 +92,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo",
+									"raw": "{{baseUrl1}}",
 									"host": [
 										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
 									]
 								}
 							},
@@ -116,8 +107,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Title in the Response body is Internal Server Error\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Internal Server Error\");\r",
+											"pm.test(\"Title in the Response body is Fusio\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Fusio\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -128,72 +119,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo",
+									"raw": "{{baseUrl1}}",
 									"host": [
 										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Message in Response body is Unknown location",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Message in the Response body is Unknown location\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Unknown location\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl1}}/todo",
-									"host": [
-										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Success in Response body returns a Boolean",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Success in the Response body returns Boolean\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(false);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl1}}/todo",
-									"host": [
-										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo"
 									]
 								}
 							},
@@ -322,7 +250,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Title in the Response body is 6.0.2.0\", function () {\r",
+											"pm.test(\"Response body contains apiVersion of 6.0.2.0\", function () {\r",
 											"    pm.expect(pm.response.text()).to.include(\"6.0.2.0\");\r",
 											"});"
 										],
@@ -349,16 +277,36 @@
 					"item": [
 						{
 							"name": "Get entry per ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
+									"raw": "{{baseUrl1}}/?todo_id=1",
 									"host": [
 										"{{baseUrl1}}"
 									],
 									"path": [
-										"todo",
 										""
 									],
 									"query": [
@@ -379,11 +327,11 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"pm.test(\"Status code is Not Found\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -394,12 +342,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
+									"raw": "{{baseUrl1}}/?todo_id=1",
 									"host": [
 										"{{baseUrl1}}"
 									],
 									"path": [
-										"todo",
 										""
 									],
 									"query": [
@@ -431,12 +378,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
+									"raw": "{{baseUrl1}}/?todo_id=1",
 									"host": [
 										"{{baseUrl1}}"
 									],
 									"path": [
-										"todo",
 										""
 									],
 									"query": [
@@ -468,12 +414,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
+									"raw": "{{baseUrl1}}/?todo_id=1",
 									"host": [
 										"{{baseUrl1}}"
 									],
 									"path": [
-										"todo",
 										""
 									],
 									"query": [
@@ -493,8 +438,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Title in the Response body is Internal Server Error\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Internal Server Error\");\r",
+											"pm.test(\"Title in the Response body is Fusio\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Fusio\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -505,86 +450,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
+									"raw": "{{baseUrl1}}/?todo_id=1",
 									"host": [
 										"{{baseUrl1}}"
 									],
 									"path": [
-										"todo",
-										""
-									],
-									"query": [
-										{
-											"key": "todo_id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Message in Response body is Unknown location",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Message in the Response body is Unknown location\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Unknown location\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
-									"host": [
-										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo",
-										""
-									],
-									"query": [
-										{
-											"key": "todo_id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Success in Response body returns a Boolean",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Success in the Response body returns Boolean\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(false);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl1}}/todo/?todo_id=1",
-									"host": [
-										"{{baseUrl1}}"
-									],
-									"path": [
-										"todo",
 										""
 									],
 									"query": [
@@ -615,24 +485,43 @@
 									"script": {
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"   pm.response.to.have.status(200);\r",
 											"});\r",
-											"const response = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code name has OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"The Russian\",\"fiction\",1,true);\r",
+											"});\r",
+											"pm.test(\"Body matches Integer\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(1,2,3,6,5);\r",
+											"});\r",
+											"pm.test(\"Body matches boolean\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(true||false);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"//const response = pm.response.json();\r",
 											"// print any kind of variables/message on the screen\r",
-											"console.log(response[2].name);\r",
-											"/*const Fiction = response.filter((book) => book.type === \"fiction\");\r",
-											"console.log(Fiction)\r",
-											"//Print out the id of a fiction book that is available called \"The Midnight Library\"*/\r",
+											"//console.log(response[2].name);\r",
+											"//pm.test(\"Search for a book name called Viscount Who Loved Me\", function (){\r",
+											" //   pm.expect(response[3].name).to.eql(\"Viscount Who Loved Me\")\r",
+											"//});\r",
 											"\r",
-											"const Fiction = response.filter((book) => book.type === \"fiction\" && book.available === true && book.name === \"Viscount Who Loved Me\")\r",
+											"// const Fiction = response.filter((book) => book.type === \"fiction\");\r",
+											"// console.log(Fiction)\r",
+											"// //Print out the id of a fiction book that is available called \"The Midnight Library\"\r",
 											"\r",
-											"console.log(Fiction[0].id);\r",
+											"// const Fiction = response.filter((book) => book.type === \"fiction\" && book.available === true && book.name === \"Viscount Who Loved Me\")\r",
 											"\r",
-											"pm.test(\"The id number of a fiction book that available with the name The Midnight Library is \" , function () {\r",
-											"    pm.expect(Fiction[0].name).eql(\"Viscount Who Loved Me\")\r",
-											"});\r",
+											"//  console.log(Fiction[1].id);\r",
 											"\r",
-											"pm.globals.set(\"bookId\", Fiction[0].id);\r",
+											"// pm.test(\"The id number of a fiction book that available with the name The Midnight Library is \" , function () {\r",
+											"//     pm.expect(Fiction[1].name).eql(\"Viscount Who Loved Me\")\r",
+											"// });\r",
+											"\r",
+											"// pm.globals.set(\"bookId\", Fiction[1].id);\r",
 											"\r",
 											"\r",
 											"\r",
@@ -644,233 +533,43 @@
 									}
 								}
 							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									]
-								}
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
 							},
-							"response": []
-						},
-						{
-							"name": "Fiction Books",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"name is The Russian\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"The Russian\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
 							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books?type=fiction",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									],
-									"query": [
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
 										{
-											"key": "type",
-											"value": "fiction"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-fiction Books",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"name is Just as I Am\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Just as I Am\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books?type=non-fiction",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "non-fiction"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Limited Number of Books",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books?limit=2",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Limited Number of Fiction Books",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books?type=fiction&limit=2",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "fiction"
+											"key": "accessTokenUrl",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
 										},
 										{
-											"key": "limit",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Limited Number of Non-fiction Books",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books?type=non-fiction&limit=2",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "non-fiction"
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
 										},
 										{
-											"key": "limit",
-											"value": "2"
+											"key": "headerPrefix",
+											"value": "89d5ac8af16ba3db2e2ef2e4e5a0aaf13ab35634ceb46ef67fc2938da0908723",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
 										}
 									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Verify that Response Time is above 200ms",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Response time is more than 200ms\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
+								},
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{baseUrl2}}/books",
 									"host": [
@@ -917,6 +616,284 @@
 							"response": []
 						},
 						{
+							"name": "Verify that Response Time is above 200ms",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/books",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fiction Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"// print any kind of variables/message on the screen\r",
+											"console.log(response[2].name);\r",
+											"pm.test(\"Search for a book name called Viscount Who Loved Me\", function (){\r",
+											"    pm.expect(response[3].name).to.eql(\"Viscount Who Loved Me\")\r",
+											"});\r",
+											"\r",
+											"/*const Fiction = response.filter((book) => book.type === \"fiction\");\r",
+											"console.log(Fiction)\r",
+											"//Print out the id of a fiction book that is available called \"The Midnight Library\"*/\r",
+											"\r",
+											"const Fiction = response.filter((book) => book.type === \"fiction\" && book.available === true && book.name === \"Viscount Who Loved Me\")\r",
+											"\r",
+											"console.log(Fiction[0].id);\r",
+											"\r",
+											"pm.test(\"The id number of a fiction book that available with the name The Midnight Library is \" , function () {\r",
+											"    pm.expect(Fiction[0].name).eql(\"Viscount Who Loved Me\")\r",
+											"});\r",
+											"\r",
+											"pm.globals.set(\"bookId\", Fiction[0].id);\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/books/?type=fiction",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "fiction"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Non-fiction Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(2,\"Just as I Am\",\"non-fiction\",false);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"// const response = pm.response.json();\r",
+											"// // print any kind of variables/message on the screen\r",
+											"// console.log(response[2].name);\r",
+											"// pm.test(\"Search for a book name called Viscount Who Loved Me\", function (){\r",
+											"//     pm.expect(response[3].name).to.eql(\"Viscount Who Loved Me\")\r",
+											"// });\r",
+											"\r",
+											"// /*const Fiction = response.filter((book) => book.type === \"fiction\");\r",
+											"// console.log(Fiction)\r",
+											"// //Print out the id of a fiction book that is available called \"The Midnight Library\"*/\r",
+											"\r",
+											"// const Fiction = response.filter((book) => book.type === \"fiction\" && book.available === true && book.name === \"Viscount Who Loved Me\")\r",
+											"\r",
+											"// console.log(Fiction[0].id);\r",
+											"\r",
+											"// pm.test(\"The id number of a fiction book that available with the name The Midnight Library is \" , function () {\r",
+											"//     pm.expect(Fiction[0].name).eql(\"Viscount Who Loved Me\")\r",
+											"// });\r",
+											"\r",
+											"// pm.globals.set(\"bookId\", Fiction[0].id);\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/books/?type=non-fiction",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "non-fiction"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Limited Number of Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/?limit=2",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Limited Number of Fiction Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/?type=fiction&limit=2",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "fiction"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Limited Number of Non-fiction Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl2}}/?type=non-fiction&limit=2",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "non-fiction"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Verify that Response body is in JSON format",
 							"event": [
 								{
@@ -935,12 +912,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl2}}/books",
+									"raw": "{{baseUrl2}}",
 									"host": [
 										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
 									]
 								}
 							},
@@ -965,1123 +939,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl2}}/books",
+									"raw": "{{baseUrl2}}",
 									"host": [
 										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
 									]
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Verify that Id in the Response Body returns an Interger Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"available returns a Boolean\",function(){\r",
-											"    pm.expect(pm.response.value);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/books",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"books"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Order Book",
-					"item": [
-						{
-							"name": "With Valid Bearer Token",
-							"item": [
-								{
-									"name": "Generate Access Token",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 409\", function () {\r",
-													"    pm.response.to.have.status(409);\r",
-													"});\r",
-													"pm.test(\"Status code response is Conflict\", function () {\r",
-													"    pm.response.to.have.status(\"Conflict\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"clientName\": \"Ogoo\",\n  \"clientEmail\": \"ogoogbuanu@mailinator.com\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://simple-books-api.glitch.me/api-clients/",
-											"protocol": "https",
-											"host": [
-												"simple-books-api",
-												"glitch",
-												"me"
-											],
-											"path": [
-												"api-clients",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Customer Name and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 201\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"pm.test(\"Status code response is Created\", function () {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 4,\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}",
-											"host": [
-												"{{baseUrl2}}"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Customer Name and Invalid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 13,\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Customer Name and Invalid Book Id Format",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"abc\",\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Valid Customer Name and No Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"\",\n  \"customerName\": \"Ogoo\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Valid Book Id and No Customer Name",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 201\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"pm.test(\"Status code response is Created\", function () {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Random Customer Name and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 201\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"pm.test(\"Status code response is Created\", function () {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"{{$randomName}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Random Customer Name and Random Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"{{$randomInt}}\",\n  \"customerName\": \"{{$randomFullName}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Valid Customer Name and Random Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"{{$randomInt}}\",\n  \"customerName\": \"James Brown\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, Invalid Customer Name Format and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 201\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"pm.test(\"Status code response is Created\", function () {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 3,\n  \"customerName\": 123456\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Valid Bearer Token, No Customer Name, and No Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code response is Bad Request\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"\",\n  \"customerName\": \"\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "With Invalid Bearer Token Copy",
-							"item": [
-								{
-									"name": "With Invalid Bearer Token, Customer Name and Invalid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const OrderId = pm.response.json();\r",
-													"\r",
-													"console.log(OrderId.orderId);\r",
-													"pm.globals.set(\"OrderId\", OrderId.orderId);\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 13,\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}",
-											"host": [
-												"{{baseUrl2}}"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Customer Name and Invalid Book Id Format",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"abc\",\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With invalid Bearer Token, Valid Customer Name and No Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"\",\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Valid Book Id and No Customer Name",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Random Customer Name and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"{{$randomName}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Random Customer Name and Random Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"{{$randomInt}}\",\n  \"customerName\": \"{{$randomFullName}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Valid Customer Name and Random Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"{{$randomInt}}\",\n  \"customerName\": \"James Brown\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Invalid Customer Name Format and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 3,\n  \"customerName\": 123456\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, Valid Customer Name, and Valid Book Id",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"John\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "With Invalid Bearer Token, No Customer Name, and No Book Id Copy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{Invalid Token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"bookId\": \"\",\n  \"customerName\": \"\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl2}}/orders",
-											"host": [
-												"{{baseUrl2}}"
-											],
-											"path": [
-												"orders"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {",
-											"    pm.response.to.have.status(401);",
-											"});",
-											"pm.test(\"Status code response is Unauthorized\", function () {",
-											"    pm.response.to.have.status(\"Unauthorized\");",
-											"});"
-										]
-									}
-								}
-							]
 						}
 					]
 				},
@@ -2090,6 +954,149 @@
 					"item": [
 						{
 							"name": "With Valid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "368a9a0690f70c9f9d7e043e6c70a71f2ba70ec5734cf9325f8b4d01c01d4f3e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "89d5ac8af16ba3db2e2ef2e4e5a0aaf13ab35634ceb46ef67fc2938da0908723",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl2}}/?orders",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "With Valid Token and Valid Book Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl2}}/?orders/:bookId",
+									"host": [
+										"{{baseUrl2}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "orders/:bookId",
+											"value": null
+										},
+										{
+											"key": "bookId",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "With Valid Token and Valid Order Id",
 							"event": [
 								{
 									"listen": "test",
@@ -2138,132 +1145,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders",
+									"raw": "{{baseUrl2}}/?order/:orderId",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Valid Token and Valid Book Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:bookId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":bookId"
+										""
 									],
 									"query": [
 										{
-											"key": "bookId",
-											"value": "3",
-											"disabled": true
-										}
-									],
-									"variable": [
-										{
-											"key": "bookId",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Valid Token and Valid Order Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "XERXr0KZv-2BLn4XcSklt"
+											"key": "order/:orderId",
+											"value": null
 										}
 									]
 								}
@@ -2277,6 +1169,17 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2309,18 +1212,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
+									"raw": "{{baseUrl2}}/?orders/:orderId",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders",
-										":orderId"
+										""
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "orderId",
-											"value": "2BLn4XcSklt"
+											"key": "orders/:orderId",
+											"value": null
 										}
 									]
 								}
@@ -2334,6 +1236,20 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"});\r",
+											"pm.test(\"Response BODY\", function () {\r",
+											"   pm.response.to.be.json;\r",
+											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2366,25 +1282,22 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders/:customerName",
+									"raw": "{{baseUrl2}}/?orders/:customerName",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders",
-										":customerName"
+										""
 									],
 									"query": [
+										{
+											"key": "orders/:customerName",
+											"value": null
+										},
 										{
 											"key": "customerName",
 											"value": "James Brown",
 											"disabled": true
-										}
-									],
-									"variable": [
-										{
-											"key": "customerName",
-											"value": "James Brown"
 										}
 									]
 								}
@@ -2398,6 +1311,17 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2430,12 +1354,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders",
+									"raw": "{{baseUrl2}}/?orders",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders"
+										""
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": null
+										}
 									]
 								}
 							},
@@ -2448,12 +1378,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -2491,12 +1421,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders",
+									"raw": "{{baseUrl2}}/?orders",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders"
+										""
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": null
+										}
 									]
 								}
 							},
@@ -2509,15 +1445,15 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
 											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
 											"});\r",
 											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2550,18 +1486,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
+									"raw": "{{baseUrl2}}/?orders/:orderId",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders",
-										":orderId"
+										""
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "orderId",
-											"value": "HtnEecTUnEZr-Rlnmr4b-"
+											"key": "orders/:orderId",
+											"value": null
 										}
 									]
 								}
@@ -2575,15 +1510,15 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
 											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
 											"});\r",
 											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2641,52 +1576,6 @@
 					"item": [
 						{
 							"name": "With Valid Order Id",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "HtnEecTUnEZr-Rlnmr4b-"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Customer Name",
 							"event": [
 								{
 									"listen": "test",
@@ -2735,222 +1624,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl2}}/orders/:customerName",
+									"raw": "{{baseUrl2}}/?order",
 									"host": [
 										"{{baseUrl2}}"
 									],
 									"path": [
-										"orders",
-										":customerName"
+										""
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "customerName",
-											"value": "James Brown"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Book Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response time is less than 200ms\", function () {\r",
-											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:bookId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":bookId"
-									],
-									"variable": [
-										{
-											"key": "bookId",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Deleted Order Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response time is less than 200ms\", function () {\r",
-											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "HtnEecTUnEZr-Rlnmr4b-"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Invalid Order Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response time is less than 200ms\", function () {\r",
-											"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "bl8ZbxUCq59bH8DyYWvjo"
+											"key": "order",
+											"value": null
 										}
 									]
 								}
@@ -2960,185 +1644,53 @@
 					]
 				},
 				{
-					"name": "Delete an Order",
-					"item": [
+					"name": "Generate Access Token",
+					"event": [
 						{
-							"name": "With Valid Order Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string OK\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
-											"});\r",
-											"pm.test(\"Response BODY\", function () {\r",
-											"   pm.response.to.be.json;\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl2}}/orders/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										"orders",
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "HtnEecTUnEZr-Rlnmr4b-"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "With Book Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string Not Found\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{Token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/:bookId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										":bookId"
-									],
-									"variable": [
-										{
-											"key": "bookId",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete an order",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code name has string OK\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response BODY\", function () {\r",
-											"   pm.response.to.be.json;\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl2}}/:orderId",
-									"host": [
-										"{{baseUrl2}}"
-									],
-									"path": [
-										":orderId"
-									],
-									"variable": [
-										{
-											"key": "orderId",
-											"value": "bl8ZbxUCq59bH8DyYWvjo"
-										}
-									]
-								}
-							},
-							"response": []
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									"pm.test(\"Status code response is Conflict\", function () {\r",
+									"    pm.response.to.have.status(\"Conflict\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clientName\": \"Ogoo\",\n  \"clientEmail\": \"ogo@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/api-clients/",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"api-clients",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
