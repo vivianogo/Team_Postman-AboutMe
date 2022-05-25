@@ -1,0 +1,631 @@
+{
+	"info": {
+		"_postman_id": "aee29815-ea20-417e-b413-2ae65239ab1c",
+		"name": "API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Todo Entries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Body matches strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\",\"title\",\"message\");\r",
+							"});\r",
+							"\r",
+							"var responseBody = pm.response.json();\r",
+							"pm.test(\"The title in the responseBody\", function () {\r",
+							"    pm.expect(responseBody.title).to.eql(\"Internal Server Error\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrlTodo}}todo",
+					"host": [
+						"{{baseUrlTodo}}todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Entries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//To confirm the status code \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//To confirm the status code name\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"//To confirm the Response time \r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+							"});\r",
+							" const jsonData = pm.response.json();\r",
+							" //console.log(jsonData.links.length);\r",
+							"\r",
+							" //To confirm the length of an array in links\r",
+							"pm.test(\"Arrays in 'Links' is equal to 9\",() => {\r",
+							"     pm.expect(jsonData.links.length).to.eql(9);\r",
+							" });\r",
+							" //const links = pm.response.json();\r",
+							" const href = pm.response.json();\r",
+							" const resJson = pm.response.json();\r",
+							" const categories = resJson.categories;\r",
+							" //console.log(jsonData.scopes[0]);\r",
+							"\r",
+							"//To confirm the length of the categories in the response body\r",
+							" pm.test(\"Length of categories is equal to 5\",() => {\r",
+							"     pm.expect(categories.length).to.eql(5);\r",
+							" });\r",
+							"//Get value of an object\r",
+							"pm.test(\"Get value of an object\",() => {\r",
+							"     pm.expect(jsonData.apps.fusio).to.eql(\"https://demo.fusio-project.org/apps/fusio\");\r",
+							" });\r",
+							" //Get ith index of an array\r",
+							" pm.test(\"Get index of an array\",() => {\r",
+							"     pm.expect(jsonData.links[2].rel).to.eql(\"documentation\");\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrlTodo}}",
+					"host": [
+						"{{baseUrlTodo}}"
+					]
+				},
+				"description": "https://demo.fusio-project.org/index.php/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get entry per ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.fusio-project.org/index.php/todo/?todo_id=2",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"fusio-project",
+						"org"
+					],
+					"path": [
+						"index.php",
+						"todo",
+						""
+					],
+					"query": [
+						{
+							"key": "todo_id",
+							"value": "2"
+						}
+					]
+				},
+				"description": "https://demo.fusio-project.org/index.php/todo/:todo_id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"//console.log(response);\r",
+							"\r",
+							"//console.log(response.length);\r",
+							"pm.test(\"Length of the Array \", function (){\r",
+							"    pm.expect(response.length).to.eql(6)\r",
+							"});\r",
+							"//console.log(response[2].name);\r",
+							"pm.test(\"Search for a book name called The Vanishing Half\", function (){\r",
+							"    pm.expect(response[2].name).to.eql(\"The Vanishing Half\")\r",
+							"});\r",
+							"\r",
+							"//Print out the id of a fiction book that is available called \"The Russian\"*/\r",
+							"\r",
+							"const book = response.filter((book) => book.type === \"fiction\" || book.available === true || book.name === \"The Russian\")\r",
+							"//console.log(book[0].id);\r",
+							"\r",
+							"pm.test(\"The id number of a fiction book that available with the name The Russian is \" , function () {\r",
+							"    pm.expect(book[0].name).eql(\"The Russian\")\r",
+							"});\r",
+							"\r",
+							"// pm.globals.set(\"bookId\", Fiction[0].id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrlbooks}}books",
+					"host": [
+						"{{baseUrlbooks}}books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get fiction Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"console.log(response);\r",
+							"//console.log(response[2].name);\r",
+							"\r",
+							"// print any kind of variables/message on the screen\r",
+							"pm.test(\"Search for a book name called Viscount Who Loved Me\", function (){\r",
+							"    pm.expect(response[3].name).to.eql(\"Viscount Who Loved Me\")\r",
+							"});\r",
+							"\r",
+							"/*const Fiction = response.filter((book) => book.type === \"fiction\");\r",
+							"console.log(Fiction)\r",
+							"//Print out the id of a fiction book that is available called \"The Midnight Library\"*/\r",
+							"\r",
+							"const Fiction = response.filter((book) => book.type === \"fiction\" && book.available === true && book.name === \"Viscount Who Loved Me\")\r",
+							"\r",
+							"//console.log(Fiction[0].id);\r",
+							"\r",
+							"pm.test(\"The id number of a fiction book that available with the name The Midnight Library is \" , function () {\r",
+							"    pm.expect(Fiction[0].name).eql(\"Viscount Who Loved Me\")\r",
+							"});\r",
+							"\r",
+							"pm.globals.set(\"bookId\", Fiction[0].id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrlbooks}}books?type=fiction",
+					"host": [
+						"{{baseUrlbooks}}books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get non-fiction Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"console.log(response);\r",
+							"//console.log(response[2].name);\r",
+							"\r",
+							"// Search for book with index of 1\r",
+							"pm.test(\"Search for a book name called Untamed\", function (){\r",
+							"    pm.expect(response[1].name).to.eql(\"Untamed\")\r",
+							"});\r",
+							"\r",
+							"const Response = response.filter((book) => book.type === \"non-fiction\" && book.available === true && book.name === \"Untamed\")\r",
+							"\r",
+							"//console.log(Fiction[0].id);\r",
+							"pm.test(\"The id number of a fiction book that available with the name Untamed\" , function () {\r",
+							"    pm.expect(Response[0].name).eql(\"Untamed\")\r",
+							"});\r",
+							"\r",
+							"//pm.globals.set(\"bookId\", Fiction[0].id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrlbooks}}books?type=non-fiction",
+					"host": [
+						"{{baseUrlbooks}}books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "non-fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place a book order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const OrderId = pm.response.json();\r",
+							"\r",
+							"// console.log(OrderId.orderId);\r",
+							"// pm.globals.set(\"OrderId\", OrderId.orderId);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookId\": 1,\n  \"customerName\": \"Vivi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrlbooks}}/orders",
+					"host": [
+						"{{baseUrlbooks}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).not.to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"const accessToken = pm.response.json();\r",
+							"console.log(accessToken);\r",
+							"\r",
+							"pm.test(\"response contains accessToken\", function(){\r",
+							"     pm.expect(pm.response.text()).to.include(\"accessToken\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"// console.log(OrderId.orderId);\r",
+							"// pm.globals.set(\"OrderId\", OrderId.orderId);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"clientName\": \"Vivi\",\n  \"clientEmail\": \"v@mailinator.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{generateToken}}",
+					"host": [
+						"{{generateToken}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							" });\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"const jsonRes = pm.response.json();\r",
+							"//console.log(jsonRes[0].customerName);\r",
+							"pm.test(\"customerName is Vivi\", function () {\r",
+							"    pm.expect(jsonRes[0].customerName).to.eql(\"Vivi\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrlbooks}}orders/",
+					"host": [
+						"{{baseUrlbooks}}orders"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							" });\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"const jsonRes = pm.response.json();\r",
+							"//console.log(jsonRes.customerName);\r",
+							"pm.test(\"customerName is Vivi\", function () {\r",
+							"    pm.expect(jsonRes.customerName).to.eql(\"Vivi\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerName\": \"John\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrlbooks}}orders/GDZ3obXxaYE9uS1x3OJiY",
+					"host": [
+						"{{baseUrlbooks}}orders"
+					],
+					"path": [
+						"GDZ3obXxaYE9uS1x3OJiY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrlbooks}}orders/",
+					"host": [
+						"{{baseUrlbooks}}orders"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
